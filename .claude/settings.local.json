@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(wget:*)",
+      "Bash(ls:*)",
+      "Bash(/opt/cosmo/bin/cosmocc:*)",
+      "Bash(timeout 2 ./server:*)",
+      "Bash(timeout 30 ./server:*)",
+      "Bash(xxd:*)",
+      "Bash(zip:*)",
+      "Bash(apt list:*)",
+      "Bash(7z a:*)",
+      "Bash(make)",
+      "Bash(unzip:*)",
+      "Bash(/opt/cosmo/bin/apelink:*)",
+      "Bash(/opt/cosmo/bin/apecopy:*)",
+      "Bash(zipinfo:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(curl:*)",
+      "Bash(chmod:*)",
+      "Bash(/tmp/cosmo-zip server:*)",
+      "Bash(make run:*)",
+      "Bash(make:*)",
+      "Bash(timeout 2 /home/mcruikshank/source/apeui/bin/server:*)"
+    ]
+  }
+}

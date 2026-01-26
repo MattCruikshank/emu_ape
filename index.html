@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Actually Portable Executable User Interface</title>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body>
+  <h1>Actually Portable Executable User Interface</h1>
+  <div id='messages'></div>
+  <input id='input' type='text' placeholder='Type a message...'>
+  <button onclick='send()'>Send</button>
+  <script>
+    var ws = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/ws');
+    var msgs = document.getElementById('messages');
+    ws.onopen = function () { log('Connected!'); };
+    ws.onmessage = function (e) { log(e.data); };
+    ws.onclose = function () { log('Disconnected'); };
+    function log(m) { msgs.innerHTML += m + '<br>'; msgs.scrollTop = msgs.scrollHeight; }
+    function send() {
+      var input = document.getElementById('input');
+      if (input.value) { ws.send(input.value); input.value = ''; }
+    }
+    document.getElementById('input').onkeypress = function (e) { if (e.key === 'Enter') send(); };
+  </script>
+</body>
+
+</html>
