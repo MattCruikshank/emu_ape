@@ -5,6 +5,9 @@
 // /opt/cosmo/bin/cosmocc -o server hello.c mongoose.c && zip server index.html && ./server
 // Mako streaming html <await>
 
+// make run
+// http://debianvm.tail4c18a.ts.net:6711/
+
 static const char *s_listen_url = "http://0.0.0.0:6711";
 static char *s_html = NULL;
 static char *s_css = NULL;
@@ -31,6 +34,7 @@ static void handle_websocket_message(struct mg_connection *c, struct mg_ws_messa
   // Echo the message back with a prefix
   mg_ws_printf(c, WEBSOCKET_OP_TEXT, "Echo: %.*s", (int)wm->data.len, wm->data.buf);
 }
+
 
 static void event_handler(struct mg_connection *c, int ev, void *ev_data) {
   if (ev == MG_EV_HTTP_MSG) {
