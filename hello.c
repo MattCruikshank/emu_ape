@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// sudo /opt/cosmo/bin/fatcosmocc --update
+
 // /opt/cosmo/bin/cosmocc -o server hello.c mongoose.c && zip server index.html && ./server
 // Mako streaming html <await>
 
