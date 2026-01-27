@@ -10,6 +10,8 @@
 // make run
 // http://debianvm.tail4c18a.ts.net:6711/
 
+// 67... 11...
+
 static const char *s_listen_url = "http://0.0.0.0:6711";
 static char *s_html = NULL;
 static char *s_css = NULL;
