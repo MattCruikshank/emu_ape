@@ -22,7 +22,10 @@
       "Bash(/tmp/cosmo-zip server:*)",
       "Bash(make run:*)",
       "Bash(make:*)",
-      "Bash(timeout 2 /home/mcruikshank/source/apeui/bin/server:*)"
+      "Bash(timeout 2 /home/mcruikshank/source/apeui/bin/server:*)",
+      "WebFetch(domain:cosmo.zip)",
+      "WebFetch(domain:justine.lol)",
+      "Bash(/opt/cosmo/bin/fatcosmocc:*)"
     ]
   }
 }

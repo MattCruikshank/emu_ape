@@ -1,4 +1,4 @@
-CC = /opt/cosmo/bin/cosmocc
+CC = /opt/cosmo/bin/fatcosmocc
 ZIP = /opt/cosmo/bin/zip
 CFLAGS =
 BINDIR = bin
