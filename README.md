@@ -4,15 +4,41 @@ A self-contained emulator server built as an [Actually Portable Executable](http
 
 The server embeds [EmulatorJS](https://github.com/EmulatorJS/EmulatorJS) and all its cores directly inside the APE binary using Cosmopolitan's zip filesystem. Drop ROM files into a `roms/` folder and they appear in the web UI automatically.
 
-## Usage
+## Installation (Windows)
 
-1. Download `emu_ape` from the [releases page](https://github.com/MattCruikshank/emu_ape/releases)
-2. Create a `roms/` directory next to the binary
-3. Drop your ROM files into `roms/`
-4. Run `./emu_ape`
-5. Open http://localhost:6711
+### 1. Download
 
-ROMs are listed in the browser. Click one to play, or drag and drop a ROM file directly onto the page.
+Go to the [releases page](https://github.com/MattCruikshank/emu_ape/releases) and download the `emu_ape` file.
+
+![Download](images/Download.png)
+
+### 2. Open the download folder
+
+Open the folder where the file was downloaded.
+
+![Open Folder](images/OpenFolder.png)
+
+### 3. Rename
+
+Rename `emu_ape` to `emu_ape.com` so Windows can run it as an executable.
+
+![Rename](images/Rename.png)
+
+### 4. Properties
+
+Right-click the file and select **Properties**.
+
+![Properties](images/Properties.png)
+
+### 5. Unblock
+
+At the bottom of the **General** tab, check **Unblock** and click **Apply**. Windows blocks files downloaded from the internet by default.
+
+![Unblock](images/Unblock.png)
+
+### 6. Run
+
+Double-click `emu_ape.com` to start the server. Open http://localhost:6711 in your browser.
 
 ## Building from source
 
