@@ -3,13 +3,13 @@ bin/
 *.a
 .claude/
 
+roms/
+
 # EmulatorJS (downloaded at build time)
 data/
 docs/
 CHANGES.md
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
-LICENSE
-README.md
 package.json
 package-lock.json

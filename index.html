@@ -94,6 +94,37 @@
             #top {
                 margin: 5px;
             }
+
+            #romlist {
+                color: #aaa;
+                width: 30em;
+                max-width: 80%;
+                font-family: monospace;
+                font-weight: bold;
+                font-size: 16px;
+                margin: 10px 5px;
+                text-align: center;
+            }
+
+            #romlist h3 {
+                margin: 0.5em 0;
+            }
+
+            .rom-entry {
+                padding: 0.6em 0.4em;
+                margin: 0.3em 0;
+                background-color: #333;
+                border-radius: 0.4em;
+                border: 1px solid #555;
+                cursor: pointer;
+                transition-duration: 0.2s;
+            }
+
+            .rom-entry:hover {
+                background-color: #666;
+                border-color: #38f;
+                color: #ddd;
+            }
         </style>
     </head>
 
@@ -107,6 +138,7 @@
             <input type = file id = input>
             Drag ROM file or click here
         </div>
+        <div id="romlist"></div>
 
         <script>
             let enableDebug = false;
@@ -258,6 +290,30 @@
                 document.body.appendChild(script);
             }
             
+            async function loadRomList() {
+                try {
+                    const res = await fetch("/api/roms");
+                    const roms = await res.json();
+                    const list = document.getElementById("romlist");
+                    if (roms.length === 0) {
+                        list.innerHTML = "";
+                        return;
+                    }
+                    list.innerHTML = "<h3>Available ROMs</h3>";
+                    roms.sort();
+                    for (const rom of roms) {
+                        const entry = document.createElement("div");
+                        entry.className = "rom-entry";
+                        entry.textContent = rom;
+                        entry.onclick = () => run(false, rom);
+                        list.appendChild(entry);
+                    }
+                } catch (e) {
+                    console.error("Failed to load ROM list:", e);
+                }
+            }
+            loadRomList();
+
             input.onchange = async () => {
                 run(true);
             }
