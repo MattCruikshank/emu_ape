@@ -25,7 +25,8 @@
       "Bash(timeout 2 /home/mcruikshank/source/apeui/bin/server:*)",
       "WebFetch(domain:cosmo.zip)",
       "WebFetch(domain:justine.lol)",
-      "Bash(/opt/cosmo/bin/fatcosmocc:*)"
+      "Bash(/opt/cosmo/bin/fatcosmocc:*)",
+      "Bash(du:*)"
     ]
   }
 }

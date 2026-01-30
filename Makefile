@@ -2,13 +2,13 @@ CC = /opt/cosmo/bin/fatcosmocc
 ZIP = /opt/cosmo/bin/zip
 CFLAGS =
 BINDIR = bin
-TARGET = $(BINDIR)/server
-SOURCES = hello.c mongoose.c
-ASSETS = index.html index.css
+TARGET = $(BINDIR)/emu_ape
+SOURCES = emu_ape.c mongoose.c
 
 all: $(TARGET)
 	@echo "Adding assets to executable..."
-	$(ZIP) $(TARGET) $(ASSETS)
+	$(ZIP) $(TARGET) index.html index.css
+	$(ZIP) -r $(TARGET) data/ docs/
 
 $(TARGET): $(SOURCES) | $(BINDIR)
 	$(CC) $(CFLAGS) -o $@ $(SOURCES)
