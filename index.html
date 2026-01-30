@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>EmulatorJS</title>
+        <title>Emu Ape</title>
         <link rel = icon href = docs/favicon.ico sizes = "16x16 32x32 48x48 64x64" type = image/vnd.microsoft.icon>
         <meta name = viewport content = "width = device-width, initial-scale = 1">
         <style>
@@ -86,8 +86,8 @@
             }
 
             .logo {
-                width: 130px;
-                height: 130px;
+                width: 360px;
+                height: 360px;
                 filter: drop-shadow(0 0 10px white);
             }
 
@@ -130,8 +130,8 @@
 
     <body>
         <div id="top">
-            <h1>EmulatorJS Demo</h1>
-            <img src="docs/Logo-light.png" alt="Logo" class="logo">
+            <a href="https://github.com/MattCruikshank/emu_ape"><h2>github.com/MattCruikshank/emu_ape</h2></a>
+            <a href="https://github.com/MattCruikshank/emu_ape"><img src="images/emu_ape.jpg" alt="Emu Ape" class="logo"></a>
             <br>
         </div>
         <div id="box">
@@ -169,11 +169,11 @@
                 run(false, urlParams.get('rom'));
             }
 
-            async function run(upload, file) {
+            async function run(upload, file, forceCore) {
                 const url = upload ? input.files[0] : `roms/${file}`;
-                const parts = upload ? input.files[0].name.split(".") : file.split(".");
+                const parts = upload ? input.files[0].name.split(".") : file.split("/").pop().split(".");
 
-                const core = await (async (ext) => {
+                const core = forceCore || await (async (ext) => {
                     if (["fds", "nes", "unif", "unf"].includes(ext))
                         return "nes"
 
@@ -271,7 +271,8 @@
 
                 const top = document.getElementById("top");
                 top.remove();
-                box.remove()
+                box.remove();
+                document.getElementById("romlist").remove()
                 div.appendChild(sub)
                 document.body.appendChild(div)
 
@@ -291,21 +292,25 @@
             }
             
             async function loadRomList() {
+                console.log("loadRomList");
                 try {
                     const res = await fetch("/api/roms");
                     const roms = await res.json();
+                    console.log(roms);
                     const list = document.getElementById("romlist");
                     if (roms.length === 0) {
                         list.innerHTML = "";
                         return;
                     }
                     list.innerHTML = "<h3>Available ROMs</h3>";
-                    roms.sort();
+                    roms.sort((a, b) => a.name.localeCompare(b.name));
                     for (const rom of roms) {
                         const entry = document.createElement("div");
                         entry.className = "rom-entry";
-                        entry.textContent = rom;
-                        entry.onclick = () => run(false, rom);
+                        entry.textContent = rom.core
+                            ? `${rom.name} [${rom.core}]`
+                            : rom.name;
+                        entry.onclick = () => run(false, rom.path, rom.core);
                         list.appendChild(entry);
                     }
                 } catch (e) {
