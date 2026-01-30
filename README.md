@@ -1,5 +1,7 @@
 # emu_ape
 
+![emu_ape](images/emu_ape.jpg)
+
 A self-contained emulator server built as an [Actually Portable Executable](https://justine.lol/ape.html). Run a single binary on any OS and get a browser-based retro game emulator -- no dependencies, no installation.
 
 The server embeds [EmulatorJS](https://github.com/EmulatorJS/EmulatorJS) and all its cores directly inside the APE binary using Cosmopolitan's zip filesystem. Drop ROM files into a `roms/` folder and they appear in the web UI automatically.
